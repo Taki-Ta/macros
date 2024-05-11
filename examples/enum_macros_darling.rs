@@ -1,10 +1,10 @@
 #[allow(unused_imports)]
-use macros::EnumFrom;
+use macros::EnumFromDarling;
 //proc macro crate
 
 #[allow(unknown_lints)]
 #[allow(dead_code)]
-#[derive(Debug,EnumFrom)]
+#[derive(Debug,EnumFromDarling)]
 enum Direction<T> {
     Up(Up<T>),
     Down,
@@ -15,12 +15,6 @@ enum Direction<T> {
 struct Up<T> {
     speed: T,
 }
-
-// impl<T> From<Up<T>> for Direction<T>{
-//     fn from(value: Up<T>) -> Self{
-//         Direction::Up(value)
-//     }
-// }
 
 fn main() {
     let up:Direction<u32> =  Up { speed: 42 }.into();
